@@ -30,7 +30,13 @@ y_rf_test_pred = rf.predict(x_test)
 accuracy = accuracy_score(y_test, y_rf_test_pred)
 precision = precision_score(y_test, y_rf_test_pred)
 recall = recall_score(y_test, y_rf_test_pred)
+f1Score = f1_score(y_test, y_rf_test_pred)
+conMatrix = confusion_matrix(y_test, y_rf_test_pred)
+classReport = classification_report(y_test, y_rf_test_pred)
+
 
 print("Accuracy: ", accuracy)
 print("Precision: ", precision)
 print("Recall", recall)
+print("f1Score: ", f1Score)
+print("ClassReport: ", classReport)

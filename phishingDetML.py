@@ -278,10 +278,10 @@ model_results = pd.concat([model_results, dtResults], ignore_index=True)
 #add random forest data to model_results
 nnResults = pd.DataFrame([{
     "Model" : "Multi-Layer Perceptron",
-    "Accuracy" : accuracy_nnC,
-    "Precision" : precision_nnC,
-    "Recall" : recall_nnC,
-    "F1-Score" : f1_score_nnC
+    "Accuracy" : accuracy_nnC*100,
+    "Precision" : precision_nnC*100,
+    "Recall" : recall_nnC*100,
+    "F1-Score" : f1_score_nnC*100
 }])
 
 model_results = pd.concat([model_results, nnResults], ignore_index=True)
@@ -290,10 +290,10 @@ model_results = pd.concat([model_results, nnResults], ignore_index=True)
 #add random forest data to model_results
 svResults = pd.DataFrame([{
     "Model" : "Support Vector",
-    "Accuracy" : accuracy_svC,
-    "Precision" : precision_svC,
-    "Recall" : recall_svC,
-    "F1-Score" : f1_score_svC
+    "Accuracy" : accuracy_svC*100,
+    "Precision" : precision_svC*100,
+    "Recall" : recall_svC*100,
+    "F1-Score" : f1_score_svC*100
 }])
 
 model_results = pd.concat([model_results, svResults], ignore_index=True)
@@ -302,10 +302,10 @@ model_results = pd.concat([model_results, svResults], ignore_index=True)
 #add random forest data to model_results
 knResults = pd.DataFrame([{
     "Model" : "K-Nearest Neighbor",
-    "Accuracy" : accuracy_knC,
-    "Precision" : precision_knC,
-    "Recall" : recall_knC,
-    "F1-Score" : f1_score_knC
+    "Accuracy" : accuracy_knC*100,
+    "Precision" : precision_knC*100,
+    "Recall" : recall_knC*100,
+    "F1-Score" : f1_score_knC*100
 }])
 
 model_results = pd.concat([model_results, knResults], ignore_index=True)
@@ -314,10 +314,10 @@ model_results = pd.concat([model_results, knResults], ignore_index=True)
 #add random forest data to model_results
 gnbResults = pd.DataFrame([{
     "Model" : "Gaussian Naive Bayes",
-    "Accuracy" : accuracy_gnbC,
-    "Precision" : precision_gnbC,
-    "Recall" : recall_gnbC,
-    "F1-Score" : f1_score_gnbC
+    "Accuracy" : accuracy_gnbC*100,
+    "Precision" : precision_gnbC*100,
+    "Recall" : recall_gnbC*100,
+    "F1-Score" : f1_score_gnbC*100
 }])
 
 model_results = pd.concat([model_results, gnbResults], ignore_index=True)
@@ -325,10 +325,10 @@ model_results = pd.concat([model_results, gnbResults], ignore_index=True)
 #add random forest data to model_results
 gbResults = pd.DataFrame([{
     "Model" : "Gradient Boosting",
-    "Accuracy" : accuracy_gbC,
-    "Precision" : precision_gbC,
-    "Recall" : recall_gbC,
-    "F1-Score" : f1_score_gbC
+    "Accuracy" : accuracy_gbC*100,
+    "Precision" : precision_gbC*100,
+    "Recall" : recall_gbC*100,
+    "F1-Score" : f1_score_gbC*100
 }])
 
 model_results = pd.concat([model_results, gbResults], ignore_index=True)

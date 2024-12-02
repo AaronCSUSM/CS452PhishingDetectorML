@@ -10,10 +10,11 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.ensemble import GradientBoostingClassifier
 
+
 #use pandas to read in the dataset from url into a dataframe
 df = pd.read_csv("https://raw.githubusercontent.com/vaibhavbichave/Phishing-URL-Detection/refs/heads/master/phishing.csv")
 #.info() prints out basic information about the dataset such as number of samples, and number and names of columns
-#print(df.info())
+print(df.info())
 
 #drops the index column from the dataset. Dropping this increased the accuracy by about 1%
 df = df.drop(['Index'], axis=1)
@@ -37,7 +38,7 @@ rfC = RandomForestClassifier(random_state=100)
 lrC = LogisticRegression(random_state=100)#max_iter=100
 dtC = DecisionTreeClassifier(random_state=100)
 nnC = MLPClassifier(random_state=100)
-svC = svm.SVC(random_state=100)
+svC = svm.SVC()
 knC = KNeighborsClassifier()
 gnbC = GaussianNB()
 gbC = GradientBoostingClassifier(random_state=100)
@@ -145,8 +146,8 @@ print("")
 print("Confusion Matrix:")
 print(conMatrix)
 print("")
-#print("ClassReport")
-#print(classReport)
+print("ClassReport")
+print(classReport)
 
 
 print("Logistic Regression Classifier")
@@ -233,3 +234,107 @@ print(conMatrix_gnbC)
 print("")
 #print("ClassReport")
 #print(classReport)
+
+
+#create a new dataFrame in pandas for the results
+model_results = pd.DataFrame(columns = ["Model", "Accuracy", "Precision", "Recall", "F1-Score"])
+
+#add random forest data to model_results
+rfResults = pd.DataFrame([{
+    "Model" : "Random Forest",
+    "Accuracy" : accuracy_rf*100,
+    "Precision" : precision_rf*100,
+    "Recall" : recall_rf*100,
+    "F1-Score" : f1Score_rf*100
+}])
+
+model_results = pd.concat([model_results, rfResults], ignore_index=True)
+
+
+
+#add random forest data to model_results
+lrResults = pd.DataFrame([{
+    "Model" : "Logistic Regression",
+    "Accuracy" : accuracy_lr*100,
+    "Precision" : precision_lr*100,
+    "Recall" : recall_lr*100,
+    "F1-Score" : f1_score_lr*100
+}])
+
+model_results = pd.concat([model_results, lrResults], ignore_index=True)
+
+
+#add random forest data to model_results
+dtResults = pd.DataFrame([{
+    "Model" : "Decision Tree",
+    "Accuracy" : accuracy_dtC*100,
+    "Precision" : precision_dtC*100,
+    "Recall" : recall_dtC*100,
+    "F1-Score" : f1_score_dtC*100
+}])
+
+model_results = pd.concat([model_results, dtResults], ignore_index=True)
+
+#add random forest data to model_results
+nnResults = pd.DataFrame([{
+    "Model" : "Multi-Layer Perceptron",
+    "Accuracy" : accuracy_nnC,
+    "Precision" : precision_nnC,
+    "Recall" : recall_nnC,
+    "F1-Score" : f1_score_nnC
+}])
+
+model_results = pd.concat([model_results, nnResults], ignore_index=True)
+
+
+#add random forest data to model_results
+svResults = pd.DataFrame([{
+    "Model" : "Support Vector",
+    "Accuracy" : accuracy_svC,
+    "Precision" : precision_svC,
+    "Recall" : recall_svC,
+    "F1-Score" : f1_score_svC
+}])
+
+model_results = pd.concat([model_results, svResults], ignore_index=True)
+
+
+#add random forest data to model_results
+knResults = pd.DataFrame([{
+    "Model" : "K-Nearest Neighbor",
+    "Accuracy" : accuracy_knC,
+    "Precision" : precision_knC,
+    "Recall" : recall_knC,
+    "F1-Score" : f1_score_knC
+}])
+
+model_results = pd.concat([model_results, knResults], ignore_index=True)
+
+
+#add random forest data to model_results
+gnbResults = pd.DataFrame([{
+    "Model" : "Gaussian Naive Bayes",
+    "Accuracy" : accuracy_gnbC,
+    "Precision" : precision_gnbC,
+    "Recall" : recall_gnbC,
+    "F1-Score" : f1_score_gnbC
+}])
+
+model_results = pd.concat([model_results, gnbResults], ignore_index=True)
+
+#add random forest data to model_results
+gbResults = pd.DataFrame([{
+    "Model" : "Gradient Boosting",
+    "Accuracy" : accuracy_gbC,
+    "Precision" : precision_gbC,
+    "Recall" : recall_gbC,
+    "F1-Score" : f1_score_gbC
+}])
+
+model_results = pd.concat([model_results, gbResults], ignore_index=True)
+
+
+
+print("\n\n")
+print(model_results.round(4))
+print("\n\n")
